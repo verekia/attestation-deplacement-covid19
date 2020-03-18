@@ -48,16 +48,7 @@ const IndexPage = () => {
 
   return (
     <div>
-      <div
-        style={{
-          marginTop: 30,
-          padding: 20,
-          paddingBottom: 100,
-          paddingTop: 30,
-          boxShadow: '0 0 10px rgba(0, 0, 0, 0.2)',
-          background: 'white',
-        }}
-      >
+      <div className="page">
         <Helmet>
           <link
             href="https://fonts.googleapis.com/css?family=Roboto&display=swap"
@@ -179,7 +170,7 @@ const IndexPage = () => {
           />
         </div>
       </div>
-      <div style={{ textAlign: 'center', marginTop: 60, marginBottom: 20 }}>
+      <div className="no-print" style={{ textAlign: 'center', marginTop: 60, marginBottom: 20 }}>
         <a href="https://twitter.com/verekia" target="_blank" style={{ color: 'blue' }}>
           @verekia
         </a>
