@@ -1,6 +1,7 @@
 html {
   box-sizing: border-box;
   font-family: 'Roboto', sans-serif;
+  color: #333;
 }
 *, *:before, *:after {
   box-sizing: inherit;
@@ -12,7 +13,7 @@ body {
   background: #f7f7f7;
 }
 
-textarea, input[type="text"] {
+textarea, input[type="text"], input[type="number"] {
   color: #3d3de6;
   font-family: 'Permanent Marker', cursive;
   font-size: 20px;
@@ -22,8 +23,14 @@ input[type="checkbox"] {
   margin-right: 10px;
 }
 
-p {
+p, label {
   line-height: 1.6;
+}
+
+label {
+  cursor: pointer;
+  display: block;
+  margin-bottom: 10px;
 }
 
 .sigCanvas {
