@@ -9,12 +9,21 @@ html {
 body {
   width: 800px;
   margin: 0 auto;
+  background: #f7f7f7;
 }
 
 textarea, input[type="text"] {
   color: #3d3de6;
   font-family: 'Permanent Marker', cursive;
   font-size: 20px;
+}
+
+input[type="checkbox"] {
+  margin-right: 10px;
+}
+
+p {
+  line-height: 1.6;
 }
 
 .sigCanvas {
