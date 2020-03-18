@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 
 import Helmet from 'react-helmet'
 import SignatureCanvas from 'react-signature-canvas'
@@ -19,11 +19,18 @@ const IndexPage = () => {
   const [familyChecked, setFamilyChecked] = useState(false)
   const [sportChecked, setSportChecked] = useState(false)
 
+  const canvas = useRef()
+
   useEffect(() => {
     setName(localStorage.getItem('name') || '')
     setBirth(localStorage.getItem('birth') || '')
     setAddress(localStorage.getItem('address') || '')
     setPlace(localStorage.getItem('place') || '')
+
+    const signatureData = localStorage.getItem('signature') || null
+    if (signatureData) {
+      canvas.current.fromData(JSON.parse(signatureData))
+    }
   }, [])
 
   const handleNameChange = e => {
@@ -165,9 +172,25 @@ const IndexPage = () => {
         <p>(signature)</p>
         <div style={{ overflow: 'hidden' }}>
           <SignatureCanvas
+            ref={canvas}
             penColor="#3d3de6"
             canvasProps={{ width: 500, height: 200, className: 'sigCanvas' }}
+            onEnd={() => {
+              console.log(canvas)
+              localStorage.setItem('signature', JSON.stringify(canvas.current.toData()))
+            }}
           />
+          <a
+            href="#"
+            onClick={e => {
+              e.preventDefault()
+              canvas.current.clear()
+              localStorage.removeItem('signature')
+            }}
+            style={{ color: 'blue' }}
+          >
+            Effacer
+          </a>
         </div>
       </div>
       <div className="no-print" style={{ textAlign: 'center', marginTop: 60, marginBottom: 20 }}>
