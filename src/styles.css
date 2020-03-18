@@ -1,0 +1,31 @@
+html {
+  box-sizing: border-box;
+  font-family: 'Roboto', sans-serif;
+}
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+body {
+  width: 800px;
+  margin: 0 auto;
+}
+
+textarea, input[type="text"] {
+  color: #3d3de6;
+  font-family: 'Permanent Marker', cursive;
+  font-size: 20px;
+}
+
+.sigCanvas {
+  border: 1px solid #999;
+  margin: auto;
+  display: block;
+}
+
+@media only screen and (max-width: 800px) {
+  body {
+    width: 100%;
+    padding: 20px;
+  }
+}
