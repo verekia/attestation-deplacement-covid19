@@ -13,6 +13,9 @@ const IndexPage = () => {
   const [address, setAddress] = useState('')
   const [place, setPlace] = useState('')
 
+  const [day, setDay] = useState('')
+  const [month, setMonth] = useState('')
+
   const [proChecked, setProChecked] = useState(false)
   const [groceriesChecked, setGroceriesChecked] = useState(false)
   const [healthChecked, setHealthChecked] = useState(false)
@@ -26,6 +29,9 @@ const IndexPage = () => {
     setBirth(localStorage.getItem('birth') || '')
     setAddress(localStorage.getItem('address') || '')
     setPlace(localStorage.getItem('place') || '')
+
+    setDay(localStorage.getItem('day') || '')
+    setMonth(localStorage.getItem('month') || '')
 
     const signatureData = localStorage.getItem('signature') || null
     if (signatureData) {
@@ -53,10 +59,20 @@ const IndexPage = () => {
     localStorage.setItem('place', e.target.value)
   }
 
+  const handleDayChange = e => {
+    setDay(e.target.value)
+    localStorage.setItem('day', e.target.value)
+  }
+  const handleMonthChange = e => {
+    setMonth(e.target.value)
+    localStorage.setItem('month', e.target.value)
+  }
+
   return (
     <div>
       <div className="page">
         <Helmet>
+          <title>Attestation de déplacement dérogatoire en ligne à remplir sur smartphone</title>
           <link
             href="https://fonts.googleapis.com/css?family=Roboto&display=swap"
             rel="stylesheet"
@@ -165,8 +181,20 @@ const IndexPage = () => {
           <input type="text" style={{ width: 200 }} onChange={handlePlaceChange} value={place} />
           <br />
           <br />
-          Le <input type="number" style={{ width: 40, margin: '0 5px' }} />/
-          <input type="number" style={{ width: 40, margin: '0 5px' }} />
+          Le{' '}
+          <input
+            type="number"
+            style={{ width: 40, margin: '0 5px' }}
+            onChange={handleDayChange}
+            value={day}
+          />
+          /
+          <input
+            type="number"
+            style={{ width: 40, margin: '0 5px' }}
+            onChange={handleMonthChange}
+            value={month}
+          />
           /2020
         </p>
         <p>(signature)</p>
