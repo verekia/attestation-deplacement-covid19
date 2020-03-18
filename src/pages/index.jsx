@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 
 import Helmet from 'react-helmet'
 import SignatureCanvas from 'react-signature-canvas'
@@ -6,10 +6,17 @@ import SignatureCanvas from 'react-signature-canvas'
 import '../styles.css'
 
 const IndexPage = () => {
-  const [name, setName] = useState(localStorage.getItem('name') || '')
-  const [birth, setBirth] = useState(localStorage.getItem('birth') || '')
-  const [address, setAddress] = useState(localStorage.getItem('address') || '')
-  const [place, setPlace] = useState(localStorage.getItem('place') || '')
+  const [name, setName] = useState('')
+  const [birth, setBirth] = useState('')
+  const [address, setAddress] = useState('')
+  const [place, setPlace] = useState('')
+
+  useEffect(() => {
+    setName(localStorage.getItem('name') || '')
+    setBirth(localStorage.getItem('birth') || '')
+    setAddress(localStorage.getItem('address') || '')
+    setPlace(localStorage.getItem('place') || '')
+  }, [])
 
   const handleNameChange = e => {
     setName(e.target.value)
